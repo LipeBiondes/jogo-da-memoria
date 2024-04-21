@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadRanking() {
     const rakingDiv = document.querySelector('.ranking-container')
     axios
-      .get('http://localhost:3333/player')
+      .get('https://api-jogo-da-memoria.onrender.com/player')
       .then(response => {
         const users = response.data
         if (!users) {

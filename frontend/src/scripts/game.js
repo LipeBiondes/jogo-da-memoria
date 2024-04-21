@@ -28,7 +28,7 @@ function createUser() {
     }
 
     axios
-      .post('http://localhost:3333/player', user)
+      .post('https://api-jogo-da-memoria.onrender.com/player', user)
       .then(response => {
         const user = response.data
         setUserLocalStorage('user', JSON.stringify(user))
@@ -50,7 +50,10 @@ function updateUser(score) {
       score: score
     }
     axios
-      .put(`http://localhost:3333/player/${recoveryUser.id}`, user)
+      .put(
+        `https://api-jogo-da-memoria.onrender.com/player/${recoveryUser.id}`,
+        user
+      )
       .then(response => {
         const updatedUser = response.data
         if (updatedUser.length === 0) {
