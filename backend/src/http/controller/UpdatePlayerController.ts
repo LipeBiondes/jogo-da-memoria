@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 
 import z from 'zod'
-import { UpdatePlayerService } from '../services/UpdatePlayerService'
+import { UpdatePlayerService } from '../../services/UpdatePlayerService'
 
 export async function UpdatePlayer(
   request: FastifyRequest,

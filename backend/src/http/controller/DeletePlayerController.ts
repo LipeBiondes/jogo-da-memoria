@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 
 import z from 'zod'
-import { PlayerNotFound } from '../services/erros/player-not-found'
-import { DeletePlayerService } from '../services/DeletePlayerService'
+import { PlayerNotFound } from '../../services/erros/player-not-found'
+import { DeletePlayerService } from '../../services/DeletePlayerService'
 
 export async function DeletePlayer(
   request: FastifyRequest,

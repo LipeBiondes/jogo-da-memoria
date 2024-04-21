@@ -1,23 +1,11 @@
-import fastify from 'fastify'
-import cors from '@fastify/cors'
-import { routes } from './routes'
+import { app } from './app'
+import { env } from './env'
 
-const app = fastify({
-  logger: true
-})
-
-const start = async () => {
-  await app.register(routes)
-  await app.register(cors)
-
-  try {
-    await app.listen({
-      host: '0.0.0.0',
-      port: 3333
-    })
-  } catch (error) {
-    process.exit(1)
-  }
-}
-
-start()
+app
+  .listen({
+    host: '0.0.0.0',
+    port: env.PORT
+  })
+  .then(() => {
+    console.log('Server listening on port 3333')
+  })

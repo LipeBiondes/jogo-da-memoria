@@ -1,9 +1,9 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 
 import z from 'zod'
-import { PlayerAlreadyExistsError } from '../services/erros/player-already-exists-error'
-import { PlayerDataNotFound } from '../services/erros/player-data-not-found'
-import { CreatePlayerService } from '../services/CreatePlayerService'
+import { PlayerAlreadyExistsError } from '../../services/erros/player-already-exists-error'
+import { PlayerDataNotFound } from '../../services/erros/player-data-not-found'
+import { CreatePlayerService } from '../../services/CreatePlayerService'
 
 export async function CreatePlayer(
   request: FastifyRequest,
