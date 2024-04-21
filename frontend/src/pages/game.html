@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/imgs/caveira.svg"
+      type="image/x-icon"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../styles/game.css" />
+    <title>Jogo de Memória Acessível</title>
+  </head>
+
+  <body>
+    <!-- Adicionando os campos de audios -->
+    <audio id="audioMatch" controls style="display: none">
+      <source
+        id="audioMatchSource"
+        type="audio/mpeg"
+        src="../assets/music/som_par_encontrado.mp3"
+      />
+    </audio>
+
+    <audio id="audioNoMatch" controls style="display: none">
+      <source
+        id="audioNoMatchSource"
+        type="audio/mpeg"
+        src="../assets/music/som_par_nao_encontrado.mp3"
+      />
+    </audio>
+
+    <audio id="audioClique" controls style="display: none">
+      <source
+        id="audioCliqueSource"
+        type="audio/mpeg"
+        src="../assets/music/clique_do_mouse.mp3"
+      />
+    </audio>
+
+    <h1>Jogo de Memória Acessível</h1>
+    <div class="memory-game" id="memoryGame">
+      <!-- As cartas serão geradas dinamicamente com JavaScript -->
+    </div>
+
+    <div class="success-message hidden">
+      <div class="success-message-text">
+        <h2>Parabéns!</h2>
+        <p>Você completou o jogo.</p>
+      </div>
+    </div>
+
+    <button class="button-reiniciar" onclick="reiniciar_o_jogo()">
+      Reiniciar
+    </button>
+
+    <script src="../scripts/game.js"></script>
+    <script>
+      function reiniciar_o_jogo() {
+        location.reload()
+      }
+    </script>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app')
+    </script>
+  </body>
+</html>

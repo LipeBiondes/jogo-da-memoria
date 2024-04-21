@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="frontend/src/styles/index.css" />
+    <link
+      rel="shortcut icon"
+      href="/frontend/src/assets/imgs/caveira.svg"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Jogo de Memória Acessível - Boas-vindas</title>
+  </head>
+
+  <body class="bucetinha shadow">
+    <!-- Adicionando os campos de audios -->
+    <audio id="audioClique" controls style="display: none">
+      <source
+        id="audioCliqueSource"
+        type="audio/mpeg"
+        src="frontend/src/assets/music/clique_do_mouse.mp3"
+      />
+    </audio>
+
+    <div class="welcome-container">
+      <div class="container">
+        <h3 class="texto_h1">Bem-vindo ao Jogo de Memória Acessível!</h3>
+
+        <div class="card-body">
+          <p class="texto_p">Por favor, digite seu nome para começar:</p>
+          <div class="row">
+            <div class="col-8">
+              <input
+                type="text"
+                id="playerName"
+                placeholder="Seu Nome"
+                required
+              />
+            </div>
+            <button
+              class="btn_jogar button button-md"
+              style="margin-left: 25px; margin-top: -1px"
+            >
+              Jogar
+            </button>
+          </div>
+          <br />
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+            onclick="playClickSong()"
+          >
+            Tutorial
+          </button>
+
+          <!-- Ranking Section -->
+          <div class="ranking-container">
+            <h2>Ranking</h2>
+            <table id="rankingTable">
+              <thead>
+                <tr>
+                  <th>Posição</th>
+                  <th>Nome</th>
+                  <th>Pontuação</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade bd-example-modal-lg"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Como jogar?</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body modal-lg">
+            Objetivo do Jogo: O objetivo principal do jogo da memória é combinar
+            pares de cartas idênticas. O jogo geralmente é jogado com um
+            conjunto de cartas viradas para baixo, e os jogadores devem virar
+            duas cartas de cada vez para encontrar pares correspondentes.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-dismiss="modal"
+              onclick="playClickSong()"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="frontend/src/scripts/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app')
+    </script>
+  </body>
+</html>
