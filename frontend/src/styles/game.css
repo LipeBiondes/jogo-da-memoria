@@ -70,16 +70,14 @@ body {
   color: #ffffff;
 }
 
-/* CSS media query dentro de um stylesheet */
-@media (max-width: 450px) {
+@media (max-width: 425px) {
   .container {
     display: grid;
     width: 100%;
     gap: 1rem;
   }
-
   .memory-game {
-    max-width: 375px;
+    max-width: 100%;
   }
 
   .card {
@@ -93,23 +91,24 @@ body {
   }
 }
 
-@media (max-width: 325px) {
+/* CSS media query dentro de um stylesheet */
+@media (max-width: 375px) {
   .container {
     display: grid;
     width: 100%;
+    gap: 1rem;
   }
-
   .memory-game {
     max-width: 100%;
   }
 
   .card {
-    width: 55px;
-    height: 55px;
+    width: 58px;
+    height: 58px;
   }
 
   .card img {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
   }
 }
