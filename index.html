@@ -15,10 +15,10 @@
     />
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <title>Jogo de Memória Acessível - Boas-vindas</title>
+    <title>Jogo de Memória Acessível</title>
   </head>
 
-  <body class="bucetinha shadow">
+  <body class="body">
     <!-- Adicionando os campos de audios -->
     <audio id="audioClique" controls style="display: none">
       <source
@@ -32,17 +32,17 @@
       <div class="container">
         <h3 class="texto_h1">Bem-vindo ao Jogo de Memória Acessível!</h3>
 
-        <div class="card-body">
-          <p class="texto_p">Por favor, digite seu nome para começar:</p>
-          <div class="row">
-            <div class="col-8">
-              <input
-                type="text"
-                id="playerName"
-                placeholder="Seu Nome"
-                required
-              />
-            </div>
+        <div class="cardBody">
+          <p>Por favor, digite seu nome para começar!</p>
+
+          <div class="form">
+            <input
+              type="text"
+              id="playerName"
+              placeholder="Seu Nome"
+              required
+            />
+
             <button
               class="btn_jogar button button-md"
               style="margin-left: 25px; margin-top: -1px"
@@ -50,7 +50,7 @@
               Jogar
             </button>
           </div>
-          <br />
+
           <!-- Button trigger modal -->
           <button
             type="button"
@@ -73,7 +73,9 @@
                   <th>Pontuação</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                <!-- Ranking gerado automaticamente por codigo js -->
+              </tbody>
             </table>
           </div>
         </div>

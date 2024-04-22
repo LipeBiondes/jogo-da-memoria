@@ -7,27 +7,33 @@ html {
 body {
   font-family: 'Roboto Slab', serif;
   text-align: center;
+  background-color: #f0f0f0;
 }
 
-h1 {
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.container h1 {
   color: #000000;
-}
-
-img {
-  width: 70px;
-  height: 70px;
 }
 
 .memory-game {
   display: flex;
   flex-wrap: wrap;
-  max-width: 400px;
-  margin: 20px auto;
+  max-width: 600px;
+  margin: 2rem auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .card {
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   margin: 5px;
   border: solid 4px rgb(0, 0, 0);
   display: flex;
@@ -35,7 +41,12 @@ img {
   justify-content: center;
   border-radius: 12px;
   font-size: 20px;
-  cursor: url('../assets/cursors/ponteiro.png'), auto;
+  cursor: url(../assets/cursors/ponteiro.png), auto;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
 }
 
 .success-message.hidden {
@@ -57,4 +68,48 @@ img {
   cursor: url('..//assets/cursors/ponteiro.png'), auto;
   background-color: #a8a8a8;
   color: #ffffff;
+}
+
+/* CSS media query dentro de um stylesheet */
+@media (max-width: 450px) {
+  .container {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .memory-game {
+    max-width: 375px;
+  }
+
+  .card {
+    width: 70px;
+    height: 70px;
+  }
+
+  .card img {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 325px) {
+  .container {
+    display: grid;
+    width: 100%;
+  }
+
+  .memory-game {
+    max-width: 100%;
+  }
+
+  .card {
+    width: 55px;
+    height: 55px;
+  }
+
+  .card img {
+    width: 50px;
+    height: 50px;
+  }
 }

@@ -38,22 +38,23 @@
         src="../assets/music/clique_do_mouse.mp3"
       />
     </audio>
-
-    <h1>Jogo de Memória Acessível</h1>
-    <div class="memory-game" id="memoryGame">
-      <!-- As cartas serão geradas dinamicamente com JavaScript -->
-    </div>
-
-    <div class="success-message hidden">
-      <div class="success-message-text">
-        <h2>Parabéns!</h2>
-        <p>Você completou o jogo.</p>
+    <div class="container">
+      <h1>Jogo de Memória Acessível</h1>
+      <div class="memory-game" id="memoryGame">
+        <!-- As cartas serão geradas dinamicamente com JavaScript -->
       </div>
-    </div>
 
-    <button class="button-reiniciar" onclick="reiniciar_o_jogo()">
-      Reiniciar
-    </button>
+      <div class="success-message hidden">
+        <div class="success-message-text">
+          <h2>Parabéns!</h2>
+          <p>Você completou o jogo.</p>
+        </div>
+      </div>
+
+      <button class="button-reiniciar" onclick="reiniciar_o_jogo()">
+        Reiniciar
+      </button>
+    </div>
 
     <script src="../scripts/game.js"></script>
     <script>

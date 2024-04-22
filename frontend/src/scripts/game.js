@@ -209,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUser(score)
     }
   }
-
   const showSuccessMessage = (playerName, score) => {
     const botaoReiniciar = document.querySelector('.button-reiniciar')
     botaoReiniciar.style.display = 'none'
@@ -217,15 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessageText = successMessage.querySelector(
       '.success-message-text'
     )
+    const reiniciarButton = successMessage.querySelector('.button-reiniciar')
 
     // Atualiza a mensagem para mostrar o nome do jogador e a pontuação
     successMessageText.innerHTML = `
-    <h2>Parabéns, ${playerName}!</h2>
-    <p>Sua pontuação: ${score}</p>
-    <button class="button-reiniciar" onclick="jogarNovamente()">Jogar novamente</button>
-  `
+      <h2>Parabéns, ${playerName}!</h2>
+      <p>Sua pontuação: ${score}</p>
+      <button class="button-reiniciar" onclick="jogarNovamente()">Jogar novamente</button>
+    `
 
     successMessage.classList.remove('hidden')
+    reiniciarButton.focus() // Dá foco ao botão de reiniciar
   }
 
   const checkUser = () => {

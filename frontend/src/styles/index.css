@@ -4,39 +4,60 @@ html {
   cursor: url('../assets/cursors/mouse_arrow_pointer.svg'), auto;
 }
 
-.bucetinha {
+.body {
   font-family: 'Roboto Slab', serif;
   text-align: center;
   background-color: #f0f0f0;
-  margin: 50;
-  padding: 50;
 }
 
 .welcome-container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
+  max-width: 60%;
+  margin: 5rem auto;
+  padding: 1rem;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
 }
 
 .texto_h1 {
   color: #000000;
 }
 
-.texto_p {
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cardBody p {
   color: #666666;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
-input {
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.form input {
   padding: 10px;
-  width: calc(100% - 20px);
-  margin-bottom: 10px;
+  width: 100%;
 }
 
-input:hover {
+.form input:hover {
   cursor: url('../assets/cursors/mouse_i_cursor.svg'), auto;
 }
 
@@ -64,20 +85,20 @@ button:hover {
   margin-top: 30px;
 }
 
-table {
+.ranking-container table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-th,
+.ranking-container th,
 td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-th {
+.ranking-container th {
   background-color: #ffffff;
   color: #000000;
   border: 1px solid #000000;
@@ -87,4 +108,15 @@ th {
 
 .swal2-confirm:hover {
   cursor: url('..//assets/cursors/ponteiro.png'), auto;
+}
+
+/* CSS media query dentro de um stylesheet */
+@media (max-width: 450px) {
+  .welcome-container {
+    max-width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 2rem auto;
+  }
 }
