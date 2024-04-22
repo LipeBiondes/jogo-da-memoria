@@ -18,38 +18,15 @@ function setUserLocalStorage(key, data) {
   localStorage.setItem(key, data)
 }
 
-function createUser() {
-  const existingUser = getUserLocalStorage('user')
-
-  if (!existingUser) {
-    const user = {
-      name: userName,
-      score: 0
-    }
-
-    axios
-      .post('https://api-jogo-da-memoria.onrender.com/player', user)
-      .then(response => {
-        const user = response.data
-        setUserLocalStorage('user', JSON.stringify(user))
-        console.log(`Usuário salvo, id: ${user.id}`)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-}
-
-function updateUser(score) {
+async function updateUser(score) {
   const existingUser = getUserLocalStorage('user')
   if (existingUser) {
-    console.log(existingUser)
     let recoveryUser = JSON.parse(existingUser)
     const user = {
       name: recoveryUser.name,
       score: score
     }
-    axios
+    await axios
       .put(
         `https://api-jogo-da-memoria.onrender.com/player/${recoveryUser.id}`,
         user
@@ -65,6 +42,8 @@ function updateUser(score) {
       })
       .catch(error => {
         console.log(error)
+        const buttonReiniciar = document.querySelector('#botao-reiniciar')
+        buttonReiniciar.style.display = ''
       })
   }
 }
@@ -144,6 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Adiciona a lógica para virar as cartas
   let flippedCards = []
+  let isClickAllowed = true // Variável para controlar se o clique é permitido
+
   const flipCard = event => {
     const selectedCard = event.currentTarget
     const cardImage = selectedCard.querySelector('img')
@@ -151,14 +132,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reproduz o som de clique ao clicar em uma carta
     playClickSong()
 
-    if (flippedCards.length < 2 && !flippedCards.includes(selectedCard)) {
+    // Verifica se o clique é permitido e se já não há duas cartas viradas
+    if (
+      isClickAllowed &&
+      flippedCards.length < 2 &&
+      !flippedCards.includes(selectedCard)
+    ) {
+      // Desativa temporariamente o clique
+      isClickAllowed = false
+
+      // Aguarde um tempo antes de permitir o próximo clique
+      setTimeout(() => {
+        isClickAllowed = true
+      }, 500)
+
+      // Vira a carta e adiciona à lista de cartas viradas
       cardImage.src = selectedCard.dataset.value
       flippedCards.push(selectedCard)
 
+      // Verifica se duas cartas foram viradas
       if (flippedCards.length === 2) {
         attempts++ // Incrementa o número de tentativas após dois cliques
-        setTimeout(checkMatch, 300)
+        setTimeout(checkMatch, 500)
       }
+    }
+  }
+
+  const showSuccessMessage = (playerName, score) => {
+    const successMessage = document.querySelector('.success-message')
+    const successMessageText = successMessage.querySelector(
+      '.success-message-text'
+    )
+    const buttonReiniciar = document.querySelector('#botao-reiniciar')
+
+    // Oculta o botão de reiniciar
+    buttonReiniciar.style.display = 'none'
+
+    // Atualiza a mensagem para mostrar o nome do jogador e a pontuação
+    successMessageText.innerHTML = `
+      <h2>Parabéns, ${playerName}!</h2>
+      <p>Sua pontuação: ${score}</p>
+      <button class="button-reiniciar" onclick="jogarNovamente()">Jogar novamente</button>
+    `
+
+    successMessage.classList.remove('hidden')
+  }
+
+  // Verifica se todas as cartas foram encontradas
+  const checkWin = async () => {
+    if (pairsFound === cardImages.length) {
+      const buttonReiniciar = document.querySelector('#botao-reiniciar')
+
+      const maxAttempts = cardImages.length * 50 // Número máximo de tentativas possíveis
+      const score = calculateScore(attempts, maxAttempts)
+
+      // Oculta o botão de reiniciar
+      buttonReiniciar.style.display = 'none'
+
+      // Atualiza o usuário com a pontuação
+      await updateUser(score)
+
+      // Atualiza a mensagem de conclusão com o nome do jogador e pontuação
+      showSuccessMessage(userName, score)
     }
   }
 
@@ -196,48 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return Math.round(score)
   }
 
-  // Verifica se todas as cartas foram encontradas
-  const checkWin = () => {
-    if (pairsFound === cardImages.length) {
-      const maxAttempts = cardImages.length * 50 // Número máximo de tentativas possíveis
-      const score = calculateScore(attempts, maxAttempts)
-
-      // Atualiza a mensagem de conclusão com o nome do jogador e pontuação
-      showSuccessMessage(userName, score)
-
-      // Atualiza o usuário com a pontuação
-      updateUser(score)
-    }
-  }
-  const showSuccessMessage = (playerName, score) => {
-    const botaoReiniciar = document.querySelector('.button-reiniciar')
-    botaoReiniciar.style.display = 'none'
-    const successMessage = document.querySelector('.success-message')
-    const successMessageText = successMessage.querySelector(
-      '.success-message-text'
-    )
-    const reiniciarButton = successMessage.querySelector('.button-reiniciar')
-
-    // Atualiza a mensagem para mostrar o nome do jogador e a pontuação
-    successMessageText.innerHTML = `
-      <h2>Parabéns, ${playerName}!</h2>
-      <p>Sua pontuação: ${score}</p>
-      <button class="button-reiniciar" onclick="jogarNovamente()">Jogar novamente</button>
-    `
-
-    successMessage.classList.remove('hidden')
-    reiniciarButton.focus() // Dá foco ao botão de reiniciar
-  }
-
-  const checkUser = () => {
-    createUser() // Chama a função para criar o usuário
-  }
-
-  checkUser() // Chama a verificação ao carregar a página
   createCards() // Inicia o jogo ao carregar a página
 })
 
 function jogarNovamente() {
-  //localStorage.removeItem('user')
+  localStorage.removeItem('user')
   window.location.href = '../../../index.html'
 }
