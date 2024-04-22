@@ -65,7 +65,10 @@
           <!-- Ranking Section -->
           <div class="ranking-container">
             <h2>Ranking</h2>
-            <table id="rankingTable">
+            <!-- Adicione a mensagem de carregando -->
+            <p id="loadingMessage">Carregando...</p>
+
+            <table id="rankingTable" style="display: none">
               <thead>
                 <tr>
                   <th>Posição</th>
@@ -73,8 +76,8 @@
                   <th>Pontuação</th>
                 </tr>
               </thead>
-              <tbody>
-                <!-- Ranking gerado automaticamente por codigo js -->
+              <tbody id="rankingTableBody">
+                <!-- Ranking gerado automaticamente por código JS -->
               </tbody>
             </table>
           </div>
