@@ -18,8 +18,4 @@ git clone https://github.com/seu-usuario/nome-do-repositorio.git
 cd nome-do-repositorio
 ```
 
-3.  Instale as dependências:
-
-```
-npm install
-```
+3.  Abra a pagina index.html no seu navegador
