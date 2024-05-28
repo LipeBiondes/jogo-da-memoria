@@ -19,3 +19,7 @@ cd nome-do-repositorio
 ```
 
 3.  Abra a pagina index.html no seu navegador
+
+# Extra
+
+link do repositorio da api:  https://github.com/LipeBiondes/api-jogo-da-memoria
