@@ -18,8 +18,8 @@ git clone https://github.com/seu-usuario/nome-do-repositorio.git
 cd nome-do-repositorio
 ```
 
-3.  Instale as dependências:
+3.  Abra a pagina index.html no seu navegador
 
-```
-npm install
-```
+# Extra
+
+link do repositorio da api:  https://github.com/LipeBiondes/api-jogo-da-memoria
