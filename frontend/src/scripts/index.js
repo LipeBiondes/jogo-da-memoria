@@ -27,7 +27,7 @@ async function createUser(userName) {
   }
 
   await axios
-    .post('https://api-jogo-da-memoria.onrender.com/player', user)
+    .post('https://api-jogo-da-memoria-production.up.railway.app/player', user)
     .then(response => {
       const user = response.data
       setUserLocalStorage('user', JSON.stringify(user))
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rankingTable = document.getElementById('rankingTable')
 
     axios
-      .get('https://api-jogo-da-memoria.onrender.com/player')
+      .get('https://api-jogo-da-memoria-production.up.railway.app/player')
       .then(response => {
         const users = response.data
         if (!users) {

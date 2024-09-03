@@ -28,7 +28,7 @@ async function updateUser(score) {
     }
     await axios
       .put(
-        `https://api-jogo-da-memoria.onrender.com/player/${recoveryUser.id}`,
+        `https://api-jogo-da-memoria-production.up.railway.app/player/${recoveryUser.id}`,
         user
       )
       .then(response => {
